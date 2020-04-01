@@ -1,0 +1,85 @@
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="idliquidacion">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>idliquidacion</th>
+      <td mat-cell *matCellDef="let row">{{row.idliquidacion}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="ruc">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ruc</th>
+      <td mat-cell *matCellDef="let row">{{row.ruc}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="tipodocumento">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>tipodocumento</th>
+      <td mat-cell *matCellDef="let row">{{row.tipodocumento}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="numerodocumento">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>numerodocumento</th>
+      <td mat-cell *matCellDef="let row">{{row.numerodocumento}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>fecha</th>
+      <td mat-cell *matCellDef="let row">{{row.fecha}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="moneda">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>moneda</th>
+      <td mat-cell *matCellDef="let row">{{row.moneda}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="concepto">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>concepto</th>
+      <td mat-cell *matCellDef="let row">{{row.concepto}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="contabilidad">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>contabilidad</th>
+      <td mat-cell *matCellDef="let row">{{row.contabilidad}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="centrocosto">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>contabilidad</th>
+      <td mat-cell *matCellDef="let row">{{row.contabilidad}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="monto">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>contabilidad</th>
+      <td mat-cell *matCellDef="let row">{{row.contabilidad}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="igv">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>igv</th>
+      <td mat-cell *matCellDef="let row">{{row.igv}}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data.length"
+      [pageIndex]="0"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 20, 30]">
+  </mat-paginator>
+</div>

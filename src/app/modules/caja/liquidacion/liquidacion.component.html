@@ -1,0 +1,62 @@
+<div class="row" *ngIf="lcreated">
+    <div class="col-12 text-center">
+        <h1>Formulario de registro para liquidación</h1>
+    </div>
+    <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+        <form #crearliquidacion="ngForm" (ngSubmit)="onSubmit()" novalidate>
+            {{ crearliquidacion.value | json }}
+            <hr>
+            {{ lmodel | json }}
+            <div class="col-12 d-flex flex-wrap">
+                <div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>USUARIO</label>
+                        <input #usuario="ngModel" required [class.is-invalid]="usuario.invalid && usuario.touched" name="usuario" class="form-control form-control-sm" type="number" [(ngModel)]="lmodel.usuario">
+                        <small class="text-danger" [class.d-none]="usuario.valid || usuario.untouched">Campo obligatorio</small>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>APROBADOR</label>
+                        <select #aprobador="ngModel" required [class.is-invalid]="aprobador.invalid && aprobador.touched" name="aprobador" class="custom-select" [(ngModel)]="lmodel.aprobador">
+                            <option selected></option>
+                            <option *ngFor="let ese of aprobadores" [value]="ese.id">{{ ese.descripcion }}</option>
+                        </select>
+                        <small class="text-danger" [class.d-none]="aprobador.valid || aprobador.untouched">Campo obligatorio</small>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>MOTIVO</label>    
+                        <input #motivo="ngModel" required [class.is-invalid]="motivo.invalid && motivo.touched" name="motivo" class="form-control form-control-sm" type="text" [(ngModel)]="lmodel.motivo">
+                        <small class="text-danger" [class.d-none]="motivo.valid || motivo.untouched">Campo obligatorio</small>
+                    </div>
+                    <div class="form-group">
+                        <label>DETALLE</label>
+                        <textarea #detalle="ngModel" required [class.is-invalid]="detalle.invalid && detalle.touched" name="detalle" type="text" class="form-control form-control-sm" cols="30" rows="5" [(ngModel)]="lmodel.detalle"></textarea>
+                        <small class="text-danger" [class.d-none]="detalle.valid || detalle.untouched">Campo obligatorio</small>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-group">
+                        <label>MONTO ENTREGADO</label>
+                        <input #montoentregado="ngModel" required [class.is-invalid]="montoentregado.invalid && montoentregado.touched" name="montoentregado" class="form-control form-control-sm" type="number" [(ngModel)]="lmodel.montoentregado">      
+                        <small class="text-danger" [class.d-none]="montoentregado.valid || montoentregado.untouched">Campo obligatorio</small>
+                    </div>
+                    <div class="form-check">
+                        <input #multimoneda="ngModel" name="multimoneda" class="form-check-input" type="checkbox" [(ngModel)]="lmodel.multimoneda">
+                        <label for="form-check-label">OTRAS MONEDAS</label>
+                    </div>
+                    <div class="form-group">
+                        <label>TIEMPO DE LIQUIDACION (días)</label>
+                        <input #tiempo="ngModel" required [class.is-invalid]="tiempo.invalid && tiempo.touched" name="tiempo" class="form-control form-control-sm" type="number" [(ngModel)]="lmodel.tiempo">      
+                        <small class="text-danger" [class.d-none]="tiempo.valid || tiempo.untouched">Campo obligatorio</small>
+                    </div>
+                </div>
+                <div class="col-12 text-center py-3">
+                    <button [disabled]="crearliquidacion.form.invalid" type="submit" class="btn btn-success">CREAR LIQUIDACION</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

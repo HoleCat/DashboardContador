@@ -9,13 +9,13 @@ import { DefaultModule } from './layouts/default/default.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    DefaultModule
+    DefaultModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

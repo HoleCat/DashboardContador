@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { AppComponent } from 'src/app/app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from 'src/app/app-routing.module';
@@ -13,8 +13,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { DefaultComponent } from './default.component';
 import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.component';
 import { MatDividerModule } from '@angular/material/divider';
-import { CajaComponent } from 'src/app/modules/caja/caja.component';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { CajaComponent } from 'src/app/modules/caja/caja.component';
+import { LiquidacionComponent } from 'src/app/modules/caja/liquidacion/liquidacion.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { TableliquidacionComponent } from 'src/app/modules/caja/tableliquidacion/tableliquidacion.component';
 
 
 
@@ -24,7 +30,9 @@ import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
     DefaultComponent,
     DashboardComponent,
     MuestrasComponent,
-    CajaComponent
+    CajaComponent,
+    LiquidacionComponent,
+    TableliquidacionComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +41,11 @@ import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
     MatSidenavModule,
     MatDividerModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   bootstrap: [AppComponent]
 })
