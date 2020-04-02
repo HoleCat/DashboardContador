@@ -47,6 +47,7 @@ export class CajaComponent implements OnInit {
 
   listDetalleLiquidacion(data) {
     this.listadetalle = data;
+    console.log(this.listadetalle);
   }
 
   ngOnInit(): void {

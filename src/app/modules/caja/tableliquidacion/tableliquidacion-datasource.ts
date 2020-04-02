@@ -3,7 +3,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-import { CajaComponent } from '../caja.component';
 
 // TODO: Replace this with your own data model type
 export interface TableliquidacionItem {
@@ -12,6 +11,24 @@ export interface TableliquidacionItem {
 }
 
 // TODO: replace this with real data from your application
+const EXAMPLE_DATA: any[] = [
+  {
+    id: 33,
+    idliquidacion: 38,
+    ruc: 7777777777,
+    tipodocumento: '1',
+    numerodocumento: 77777777,
+    fecha: '2020-11-02',
+    moneda: 1,
+    concepto: 'ninguno',
+    contabilidad: 213123,
+    centrocosto: 1,
+    monto: 2000,
+    igv: 1,
+    created_at: '2020-04-01 21:53:59',
+    updated_at: '2020-04-01 21:53:59',
+  }
+];
 
 /**
  * Data source for the Tableliquidacion view. This class should
@@ -19,7 +36,7 @@ export interface TableliquidacionItem {
  * (including sorting, pagination, and filtering).
  */
 export class TableliquidacionDataSource extends DataSource<TableliquidacionItem> {
-  data: TableliquidacionItem[] = [];
+  public data: any = EXAMPLE_DATA;
   paginator: MatPaginator;
   sort: MatSort;
 

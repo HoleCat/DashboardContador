@@ -19,8 +19,6 @@ export class LiquidacionComponent implements OnInit {
   idliquidacion;
   lmodel = new Liquidacion(1, 1, 'ninguno', 'ninguno', 2000, false, 1, 200, 1000);
 
- 
-
   ngOnInit(): void {
   }
 
