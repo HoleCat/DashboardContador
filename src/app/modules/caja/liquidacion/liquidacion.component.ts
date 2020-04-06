@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Liquidacion } from 'src/app/clases/liquidacion/liquidacion';
 import { RegistroService } from 'src/app/services/registro.service';
-import { MiObservableService } from 'src/app/services/misObservables.service';
 
 @Component({
   selector: 'app-liquidacion',
@@ -9,34 +8,22 @@ import { MiObservableService } from 'src/app/services/misObservables.service';
   styleUrls: ['./liquidacion.component.sass']
 })
 export class LiquidacionComponent implements OnInit {
-  lcreated = true;
 
+  lcreated = 0;
   aprobadores = [{id: 1, descripcion: 'Jorge Hospinal'}, {id: 2, descripcion: 'Sergio Savaleta'}, {id: 3, descripcion: 'Axel Davis'}];
-  constructor(
-    private register: RegistroService,
-    private miObservable: MiObservableService
-    ) { }
-  idliquidacion;
+  constructor(private register: RegistroService) { }
+
   lmodel = new Liquidacion(1, 1, 'ninguno', 'ninguno', 2000, false, 1, 200, 1000);
+  idLiquidacion;
 
   ngOnInit(): void {
   }
 
-  setIdLiquidacion(id) {
-    this.idliquidacion = id;
-    console.log('id', id);
-
-    this.miObservable.enviarIdLiquidacion( Number(id) );
-
-    alert('se registro la liquidacion #! : ' + this.idliquidacion);
-  }
-
   onSubmit() {
     this.register.insertLiquidacion(this.lmodel).subscribe(
-      data => this.setIdLiquidacion(data),
+      data => this.register.sendliquidacion(data),
       error => console.log('Error ! ' + error)
     );
-    this.lcreated = false;
   }
 
 }

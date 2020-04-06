@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DefaultModule } from './layouts/default/default.module';
-
+import { CajaModule } from './modules/caja/caja.module';
+import { MuestrasModule } from './modules/muestras/muestras.module';
 
 @NgModule({
   declarations: [
@@ -14,8 +15,10 @@ import { DefaultModule } from './layouts/default/default.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     DefaultModule,
-    AppRoutingModule
+    CajaModule,
+    MuestrasModule
   ],
   providers: [],
   bootstrap: [AppComponent]

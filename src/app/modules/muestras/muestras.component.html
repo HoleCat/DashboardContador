@@ -1,3 +1,9 @@
-<p>muestras works!</p>
-
-<button class="btn btn-success">SI SALIO</button>
+<ul ngbNav class="nav-tabs">
+  <li [routerLink]="['mayorcompras']" class="px-2" id="navmayorventas" [ngbNavItem]="1">
+    <a ngbNavLink>MAYOR COMPRAS</a>
+  </li>
+  <li [routerLink]="['mayorventas']" class="px-2" [ngbNavItem]="2">
+    <a ngbNavLink>MAYOR VENTAS</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>

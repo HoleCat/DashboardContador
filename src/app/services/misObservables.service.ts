@@ -13,11 +13,6 @@ export class MiObservableService {
     public enviarIdLiquidacion(value: number) {
 
         this.idLiquidacion.next( value);
-        /* try {
-            this.idLiquidacion.next( value);
-        } catch (error) {
-            this.idLiquidacion.next(0);
-        } */
 
     }
 

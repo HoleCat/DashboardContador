@@ -1,91 +1,25 @@
-
-<app-liquidacion></app-liquidacion>
-<mat-divider></mat-divider>
-<div class="row" *ngIf="getstatus()">
-    <div class="col-12">
-        <app-tableliquidacion></app-tableliquidacion>
-    </div>
-</div>
-<mat-divider></mat-divider>
-<div class="row" *ngIf="getstatus()">
-    <div class="col-12">
-        <h3>Datos obligatorios</h3>
-        {{ reporteliquidaciondetalle.value | json }}
-        <hr>
-        {{ dlmodel|json }}
-        <form #reporteliquidaciondetalle="ngForm" (ngSubmit)="onSubmit()" novalidate>
-            <div class="col-12 d-flex">
-                <div class="col-xl-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>RUC</label>
-                        <input #ruc="ngModel" name="ruc"  required [class.is-invalid]="ruc.invalid && ruc.touched" class="form-control form-control-sm" type="number" [(ngModel)]="dlmodel.ruc">
-                        <small class="text-danger" [class.d-none]="ruc.valid || ruc.untouched">Campo obligatorio</small>
-                    </div>
-                    <div class="form-group">
-                        <label>TIPO DOCUMENTO</label>
-                        <select #tipodocumento="ngModel"  required [class.is-invalid]="tipodocumento.invalid && tipodocumento.touched" name="tipodocumento" class="custom-select" [(ngModel)]="dlmodel.tipodocumento">
-                            <option selected>seleccione..</option>
-                            <option *ngFor="let tipo of documentos" [value]="tipo.id">{{ tipo.descripcion }}</option>
-                        </select>
-                        <small class="text-danger" [class.d-none]="tipodocumento.valid || tipodocumento.untouched">Campo obligatorio</small>
-                    </div>
-                    <div class="form-group">
-                        <label ># DOCUMENTO</label>    
-                        <input #numerodocumento="ngModel"  required [class.is-invalid]="numerodocumento.invalid && numerodocumento.touched" name="numerodocumento" class="form-control form-control-sm" type="number" [(ngModel)]="dlmodel.numerodocumento">
-                        <small class="text-danger" [class.d-none]="numerodocumento.valid || numerodocumento.untouched">Campo obligatorio</small>
-                    </div>
-                    <div class="form-group">
-                        <label>FECHA</label>
-                        <input #fecha="ngModel"  required [class.is-invalid]="fecha.invalid && fecha.touched" name="fecha" class="form-control form-control-sm" type="date" [(ngModel)]="dlmodel.fecha">
-                        <small class="text-danger" [class.d-none]="fecha.valid || fecha.untouched">Campo obligatorio</small>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4 col-sm-6 col-xs-12">
-                    <div class="form-group">
-                        <label>MONEDA</label>
-                        <select #moneda="ngModel"  required [class.is-invalid]="moneda.invalid && moneda.touched" name="moneda" class="custom-select" [(ngModel)]="dlmodel.moneda">
-                            <option selected></option>
-                            <option *ngFor="let tipo of monedas" [value]="tipo.id">{{ tipo.descripcion }}</option>
-                        </select>
-                        <small class="text-danger" [class.d-none]="moneda.valid || moneda.untouched">Campo obligatorio</small>
-                    </div>
-                    <div class="form-group">
-                        <label>CONCEPTO</label>
-                        <input #concepto="ngModel"  required [class.is-invalid]="concepto.invalid && concepto.touched" name="concepto" class="form-control form-control-sm" type="text" [(ngModel)]="dlmodel.concepto">      
-                        <small class="text-danger" [class.d-none]="concepto.valid || concepto.untouched">Campo obligatorio</small>
-                    </div>
-                    <div class="form-group">
-                        <label>CONTABILIDAD</label>
-                        <select #contabilidad="ngModel"  required [class.is-invalid]="contabilidad.invalid && contabilidad.touched" name="contabilidad" class="custom-select" [(ngModel)]="dlmodel.contabilidad">
-                            <option selected></option>
-                            <option *ngFor="let tipo of contabilidades" [value]="tipo.id">{{ tipo.descripcion }}</option>
-                        </select>
-                        <small class="text-danger" [class.d-none]="contabilidad.valid || contabilidad.untouched">Campo obligatorio</small>
-                    </div>
-                    <div class="form-group">
-                        <label>CENTRO COSTO</label>
-                        <select #centrocosto="ngModel"  required [class.is-invalid]="centrocosto.invalid && centrocosto.touched" name="centrocosto" class="custom-select" [(ngModel)]="dlmodel.centrocosto">
-                            <option selected></option>
-                            <option *ngFor="let tipo of centros" [value]="tipo.id">{{ tipo.descripcion }}</option>
-                        </select>
-                        <small class="text-danger" [class.d-none]="centrocosto.valid || centrocosto.untouched">Campo obligatorio</small>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="form-group">
-                        <label>MONTO</label>
-                        <input #monto="ngModel"  required [class.is-invalid]="monto.invalid && monto.touched" name="monto" class="form-control form-control-sm" type="text" [(ngModel)]="dlmodel.monto">      
-                        <small class="text-danger" [class.d-none]="monto.valid || monto.untouched">Campo obligatorio</small>
-                    </div>
-                    <div class="form-check">
-                        <input #igv="ngModel"  name="igv" class="form-check-input" type="checkbox" [(ngModel)]="dlmodel.igv">
-                        <label for="form-check-label">CON IGV</label>
-                    </div>
-                    <div class="col-12 text-center py-3">
-                        <button type="submit" class="btn btn-primary">AGREGAR REGISTRO</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
+<ul ngbNav class="nav-tabs">
+    <li [routerLink]="['liquidacion']" class="nav-item px-2" id="navmayorventas" [ngbNavItem]="1">
+      <a ngbNavLink>FORMULARIO DE LIQUIDACION</a>
+    </li>
+    <li ngbDropdown class="nav-item px-2" [ngbNavItem]="2">
+        <a href (click)="false" class="nav-link" ngbDropdownToggle>OPERACIONES</a>
+        <div ngbDropdownMenu>
+            <button ngbDropdownItem [routerLink]="['cajachica']">CAJA CHICA</button>
+            <button ngbDropdownItem [routerLink]="['entregarendir']">ENTREGAS A RENDIR</button>
+            <button ngbDropdownItem [routerLink]="['parametros']">PARAMETROS</button>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem [routerLink]="['cajaresumen']">RESUMEN CAJA CHICA</button>
+            <button ngbDropdownItem [routerLink]="['cajaresumen']">RESUMEN ENTREGAS A RENDIR</button>
+        </div>
+    </li>
+    <li ngbDropdown class="nav-item px-2" [ngbNavItem]="3">
+        <a href (click)="false" class="nav-link" ngbDropdownToggle>UTILITARIOS</a>
+        <div ngbDropdownMenu>
+            <button ngbDropdownItem [routerLink]="['cajaresumen']">INFORMACION DE CDP</button>
+            <div class="dropdown-divider"></div>
+            <button ngbDropdownItem [routerLink]="['cajaresumen']">MANUAL</button>
+        </div>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
